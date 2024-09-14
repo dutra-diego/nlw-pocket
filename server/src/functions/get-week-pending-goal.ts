@@ -37,11 +37,11 @@ export async function getWeekPendingGoals() {
       .groupBy(goalCompletions.goalId)
   )
 
-  const pedingGoals = await db
+  const pendingGoals = await db
     .with(goalsCreatedUpToWeek, goalCompletionCounts)
     .select({
       id: goalsCreatedUpToWeek.id,
-      title: goalsCreatedUpToWeek.id,
+      title: goalsCreatedUpToWeek.title,
       desiredWeeklyFrequency: goalsCreatedUpToWeek.desiredWeeklyFrequency,
       completionCount: sql`
       COALESCE(${goalCompletionCounts.completionCount}, 0)
@@ -53,5 +53,5 @@ export async function getWeekPendingGoals() {
       eq(goalCompletionCounts.goalId, goalsCreatedUpToWeek.id)
     )
 
-  return { pedingGoals }
+  return { pendingGoals }
 }

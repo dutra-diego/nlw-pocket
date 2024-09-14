@@ -8,7 +8,7 @@ import {
 
 import { createGoalRoute } from './routes/create-goal'
 import { createCompletionRoute } from './routes/create-completion'
-import { getPendingGoalsRoute } from './routes/get-peding-goals'
+import { getPendingGoalsRoute } from './routes/get-pending-goals'
 import { getWeekSummaryRoute } from './routes/get-week-summary'
 import fastifyCors from '@fastify/cors'
 
